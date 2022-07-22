@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="/css/aboutUs.css">
+    <link rel="stylesheet" href="/css/admin_index_style.css">
+    <style>
+    </style>
+
+
+</head>
+
+<%- include('_layouts/header'); -%>
+
+    <section id="hero">
+        <div class="smoothie">
+            <img src="/images/pizza.png" alt="">
+        </div>
+        <div class="headings">
+            <h2>Dine In With Us</h2>
+            <h3>Don't Wait <span> Book Now! </span></h3>
+            <a href="/products" class="btn">View Menu</a>
+            <a href="/reserve-table" class="btn"> Reserve Table</a>
+        </div>
+    </section>
+
+
+    <%- include('_layouts/footer'); -%>

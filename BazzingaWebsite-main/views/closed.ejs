@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/admin_index_style.css">
+    <style>
+        *{
+            box-sizing: border-box;
+            margin:0;
+            padding: 0;
+        }
+        container {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 1rem;
+            /* border:2px solid black; */
+        }
+
+        button.km {
+            width: 12rem;
+            height: 3rem;
+            margin:0 !important;
+        }
+
+        .top-bun {
+            width: 20rem;
+            border: 5px solid #f6bd70;
+            border-radius: 5rem 5rem 1rem 1rem;
+            animation: bun-lettuce-coming 1.5s;
+        }
+
+        .tomato {
+            width: 9rem;
+            height: 1rem;
+            border: 2px solid #ff79da;
+            border-radius: 2rem;
+            animation: content-coming 1.5s;
+        }
+
+        .lettuce {
+            width: 10rem;
+            height: 0.8rem;
+            border: 2px solid #b6f06a;
+            border-radius: 2rem;
+            animation: content-comming 1.5s;
+        }
+
+        .steak {
+            width: 9rem;
+            height: 1rem;
+            border: 2px solid #9356dc;
+            border-radius: 3rem;
+            animation: content-coming 1.5s;
+        }
+
+        .bottom-bun {
+            width: 20rem;
+            height: 3rem;
+            border: 5px solid #f6bd70;
+            border-radius: 1rem 1rem 5rem 5rem;
+            animation: bun-lettuce-coming 1.5s;
+        }
+
+        @keyframes bun-lettuce-coming {
+            from {
+                transform: translateX(30rem);
+            }
+
+            to {
+                transform: translateX(0rem);
+            }
+        }
+
+        @keyframes content-coming {
+            from {
+                transform: translateX(30rem);
+            }
+
+            to {
+                transform: translateX(0rem);
+            }
+        }
+
+        @keyframes loader {
+            0% {
+                visibility: visible;
+                opacity: 1;
+                z-index: 9999;
+            }
+
+            60% {
+                opacity: 1;
+            }
+
+            100% {
+                visibility: hidden;
+                opacity: 0;
+                z-index: -1;
+            }
+        }
+
+
+        .closig-box{
+            border-radius: 8px;
+            background-color: #fdcb6e;
+            padding:20px 25px;
+            font-size: small;
+            text-align: center;
+        }
+
+        .k-btn{
+            margin-top: 30px;
+        }
+
+        .k{
+            width: 10rem;
+            height:2.5rem ;
+        }
+      
+
+    </style>
+</head>
+
+<%- include('_layouts/header'); -%>
+    <div class="closig-box">
+        <h3>Reservation closed for today.</h3>
+        <h3>Please reserve your seat tommorrow before 5PM.</h3>
+    </div>
+    
+    <container>
+        <button class="top-bun km">
+        </button>
+        <button class="lettuce km">
+        </button>
+        <button class="bottom-bun km">
+        </button>
+    </container>
+    <div class="k-btn">
+        <button class=" submit-product k"><a href="/">Go to Home</a></button>
+    </div>
+
+    <%- include('_layouts/footer'); -%>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Reservation Form</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/css/admin_index_style.css">
+        <link rel="stylesheet" href="/css/main.css">
+        <script type="text/javascript">
+            
+            function showMessage(email,phone) {
+                var selec = document.getElementById("hours");    //slot alert
+                if(selec.value === "slot"){
+                    alert("Please Select a slot");
+                }
+
+                const emailid = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                const phoneno = /^\d{10}$/;
+                if((!email.match(emailid))&&((!phone.match(phoneno))))
+                {
+                    alert("Please enter valid Email and Phone No.");
+                }
+                else if((!phone.match(phoneno)))
+                {
+                    alert("Please enter valid 10 digit Phone No.")
+                }
+                else if((!email.match(emailid)))
+                {
+                    alert("Please enter a valid Email")
+                }
+            }
+            function setSeats(slot,seats1,seats2,seats3) {
+                document.reservation.scount.value = "";
+                if(slot=="6:30PM - 8PM")
+                {
+                    if(seats1==="0"){
+                        alert("No more seats available in this slot. Please try another slot.")
+                    }
+                    document.reservation.scount.setAttribute("max",seats1);
+                }
+                if(slot=="8:30PM - 10PM")
+                {
+                    if(seats2==="0"){
+                        alert("No more seats available in this slot. Please try another slot.")
+                    }
+                    document.reservation.scount.setAttribute("max",seats2);
+                }
+                if(slot=="10PM - 12PM")
+                {
+                    if(seats3==="0"){
+                        alert("No more seats available in this slot. Please try another slot.")
+                    }
+                    document.reservation.scount.setAttribute("max",seats3);
+                }
+            }
+        </script>
+
+    </head>
+
+        <%- include('_layouts/header'); -%>
+        <section class = "container">
+            <h1>Reserve Table</h1>
+            <div class = "card">
+                <div class = "card-img">
+                </div>
+                <div class = "card-content">
+                    <h3>Details </h3>
+                    <form name = "reservation" action="/reserve-table" method="POST">
+                        <input type="hidden" name="slot1" value="<%= slot1 %>" />
+                        <input type="hidden" name="slot2" value="<%= slot2 %>" />
+                        <input type="hidden" name="slot3" value="<%= slot3 %>" />
+                        <div class = "form-row">
+                            
+                            <select name = "hours" id="hours" onchange="setSeats(hours.value,slot1.value,slot2.value,slot3.value)">
+                                <option value = "slot">Select Slot</option>
+                                <option value = "6:30PM - 8PM">Slot: 6:30PM - 8PM</option>
+                                <option value = "8:30PM - 10PM">Slot: 8:30PM - 10PM</option>
+                                <option value = "10PM - 12PM">Slot: 10PM - 12PM</option>
+                            </select>
+                        </div>
+                        <div class = "form-row">
+                            <input type = "email" name="email" placeholder="Email(abc123@.com)"  required> 
+                            <!-- <input type = "text" name="phone" placeholder="Phone Number" required> -->
+                            <input type="tel" name = "phone" placeholder="Phone No.(10 digits)" pattern="^\d{10}$" required >
+                        </div>
+                        <div class = "form-row">
+                            <input type = "number" name="scount" id = "scount" placeholder="No. of seats" min = "1" max=<%= slot1 %> required>
+                            
+                            <input type = "submit" value="Book Table" onclick="showMessage(email.value,phone.value)">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <%- include('_layouts/footer'); -%>
+        

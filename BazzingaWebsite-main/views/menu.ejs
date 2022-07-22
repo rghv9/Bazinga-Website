@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/admin_index_style.css">
+    
+   
+   
+</head>
+
+<%- include('_layouts/header'); -%>
+
+
+<style>
+  *{
+    box-sizing: border-box;
+    margin: 0;
+    padding:0;
+    /* border:1px solid black; */
+  }
+  .container{
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .menu{
+  border:1px solid transparent;
+  border-radius: 20px;
+  padding:10px 20px;
+  /* background-color: rgba(219, 219, 197, 0.664); */
+  }
+
+  .menu-group{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border:2px solid rgb(235, 211, 211);
+    border-radius: 8px;
+    padding:10px 20px;
+    margin-bottom: 100px;
+
+  }
+
+  .menu-group-heading{
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-decoration: overline;
+    font-size: large;
+  }
+
+  .menu-item{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 250px;
+    flex:40%;
+    margin-right: 20px;
+  }
+
+  .menu-item-text{
+    margin-left: 20px;
+    text-align: center;
+  }
+  .menu-item-price{
+    margin:10px 0;
+  }
+
+  .menu-item-description{
+    border:1px solid transparent;
+    padding:5px 8px;
+    border-radius: 5px;
+    overflow-x: hidden;
+    height: 60px;
+    width: 150px;
+  }
+  .menu-item-description::-webkit-scrollbar{
+    display: none;
+  }
+ 
+  .gotto{
+    margin-bottom: 20px;
+    position: sticky;
+    top:0;
+    z-index: 1000;
+   
+  }
+
+
+</style>
+
+<div class="gotto">
+  <button class="btn"><a href="#Dessert">Dessert</a></button>
+  <button class="btn"><a href="#Italian">Italian</a></button>
+  <button class="btn"><a href="#Snacks">Snacks</a></button>
+  <button class="btn"><a href="#Beverages">Beverages</a></button>
+  <button class="btn"><a href="#Ice Cream">Ice cream</a></button>
+</div>
+
+<div class="container">  
+  <div class="menu">
+    <% for(let i=0;i<categories.length ;i++) { %>
+      <% if(store[i].length>0){ %>
+        <h2 class="menu-group-heading" id="<%=categories[i].category_name %>"> <%= categories[i].category_name %> </h2>
+            <div class="menu-group ">
+              <% store[i].forEach(function(pro){ %>
+                <% if(pro.available == 1){ %>
+                     <div class="menu-item ">
+                          <img class="menu-item-image img-thumbnail" style="height: 200px; width: 200px; object-fit: contain;" src="/images/<%= pro.product_image %>" alt="<%= pro.product_title %>">
+                          <div class="menu-item-text">
+                              <h3 class="menu-item-heading">
+                                <h3 class="menu-item-name"><%= pro.product_title %></h3>
+                                <h3 class="menu-item-price">$<%= pro.product_price %></h3>
+                              </h3>
+                              <p class="menu-item-description ">
+                                    <%= pro.product_desc %>
+                              </p>
+                          </div>
+                    </div>           
+                <%}%>
+              <%})%>
+            </div>
+      <% } %>
+    <%}%>
+
+  </div>
+</div>
+
+  <%- include('_layouts/footer'); -%>

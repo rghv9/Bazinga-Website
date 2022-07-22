@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/admin_index_style.css">
+
+    <meta http-equiv="refresh" content="30">
+   
+</head>
+
+<%- include('_layouts/admin_header'); -%>
+<h2 class="titleProduct">Reservations</h2>
+
+<div class="reservation-bar">
+    <div class="total-reservation sub-bar1">
+        <h4>Total Reservations</h4>
+        <h2><%=trsf%></h2>
+    </div>
+    <div class="available-seats sub-bar3">
+        <h4>Booked Seats Slot 1</h4>
+        <h2><%= bseatsA %>/16</h2>
+    </div>
+    <div class="available-seats sub-bar3">
+        <h4>Booked Seats Slot 2</h4>
+        <h2><%= bseatsB %>/16</h2>
+    </div>
+    <div class="available-seats sub-bar3">
+        <h4>Booked Seats Slot 3</h4>
+        <h2><%= bseatsC %>/16</h2>
+    </div>
+    <div class="time-slots sub-bar2">
+        <h4>Slots</h4>
+        <% slots.forEach(function (slot) { %>
+            <h5><%= slot.slot_name %></h5>
+        <% }) %>
+    </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr class="">
+            <th scope="col">Reservation ID</th>
+            <th scope="col">Seats</th>
+            <th scope="col">Time Slot</th>
+            <th scope="col">Date</th>
+            <th scope="col"> Order Details </th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% reservations.forEach(function (reservation) { %>
+             <tr>
+                 <td scope='row'><%= reservation.reservation_id%>&fdf</td>
+                 <td><%=reservation.seats %></td>
+                 <td><%= reservation.slot %></td>
+                 <td><%= current_date %></td>
+                 <td><div>
+                     <p><%= reservation.phone %></p>
+                     <p><%= reservation.email%></p>
+                 </div></td>
+                 <td><button><a href="/admin/reservations/unreserve-booking/<%=reservation.reservation_id %>">UN-RESERVE</a></button></td>
+             </tr>   
+             <% }) %>          
+     </tbody>
+ </table>
+
+<%- include('_layouts/footer'); -%>
+

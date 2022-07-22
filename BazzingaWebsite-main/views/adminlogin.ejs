@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/css/admin_index_style.css">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="/css/adminlogin.css">
+
+
+    <style>
+      .red-alert{
+        color:red;
+        background-color: black;
+      }
+    </style>
+  </head>
+    
+    <%- include('_layouts/header'); -%>
+    <section class="login-register-content">
+      <div class="card-content">
+        <div class="card-header">
+          <h2>Login</h2>
+          <%if(alert == 1){%>
+            <h4 class="red-alert">Please fill correct info</h4>
+          <%}%>
+        </div>
+        <div class="card-body">
+          <form method="post" action="/adminlogin">
+            <input type="email" name="username" placeholder="Email Address">
+            <input type="password" name="password" placeholder="Password">
+            <button type="submit">CLICK TO LOGIN</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    
+
+    <%- include('_layouts/footer'); -%>

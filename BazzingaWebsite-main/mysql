@@ -1,0 +1,76 @@
+create database bazinga;
+use bazinga;
+
+create table feedback(
+	id int primary key auto_increment,
+    feedback varchar(1050) not null,
+  `date` datetime default now()
+);
+
+create table Category(
+	category_id int auto_increment primary key,
+    category_name varchar(20) not null unique
+);
+INSERT INTO Category VALUES ('1', 'Dessert'),('2', 'Italian'),('3', 'Snacks'),('4 ', 'Beverages'),('5', 'Ice Cream');
+
+
+
+
+create table Product(
+	product_id int auto_increment primary key,
+	product_image varchar(50),
+    product_title varchar(30) not null,
+    product_price int not null,
+    product_category_id int not null,
+    product_desc varchar(255),
+    available bool not null,
+    FOREIGN KEY (product_category_id) REFERENCES Category(category_id)
+);
+INSERT INTO Product VALUES ('1', 'delish-keto-pizza-073-1544039876.jpg', 'Pepperoni Pizza', '12', '2', 'Loaded with pepperoni and toppling', '1'),
+('2', 'pizza.png', 'Cheese Pizza', '12', '2', 'Loaded with extra cheese', '1'),
+('3', 'plate-3 - Copy.png', 'Paneer Tikka', '9', '3', 'Sweet and Spicy', '1'),
+('4', 'bigmac.png', 'Burger', '8', '2', 'Chicken ', '1'),
+('5', 'Coca-Cola_large.jpg', 'Cola', '2', '4', 'Diet and Chilled Fresh Coke', '1'),
+('6', 'cupcake.png', 'Cupcake ', '8', '5', 'Sweet ', '1'),
+('7', 'gulab-jamun-with-khoya-recipe (1).jpg', 'Gulab Jamun', '1', '1', 'Fresh Juicy Gulab Jamun', '1'),
+('8', 'hakka-noodles.jpg', 'Noodles', '12', '3', 'Fried with Chilly Sauce', '1'),
+('9', 'Mint-Chocolate-Chip-Ice-Cream.jpg', 'Chocolatey Chip ', '12', '5', 'With Mint Leaves', '1'),
+('10', 'masala-chai-1.jpg', 'Masala Chai', '3', '4', 'Masaledar Hot Tea with Ginger', '1');
+
+create table slots (
+   slot_id int primary key,
+   slot_name varchar(20),
+   seats int
+);
+
+create table reserve (
+   slot varchar(20) not null,
+   slot_id int,
+   email varchar(50) not null,
+   phone varchar(12) not null,
+   seats int not null,
+   reservation_id int auto_increment primary key,
+   FOREIGN KEY reserve(slot_id) REFERENCES slots(slot_id)
+);
+
+CREATE TABLE `admin` (
+  `email` VARCHAR(50) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`email`),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE
+);
+
+
+
+
+insert into slots values (1,'6:30PM - 8PM',16),(2,'8:30PM - 10PM',16),(3,'10PM - 12PM',16);
+INSERT INTO `admin` (`email`, `password`) VALUES ('rajanagarwal49@gmail.com', 'rajan');
+INSERT INTO `admin` (`email`, `password`) VALUES ('raghav@gmail.com', 'raghav');
+INSERT INTO `admin` (`email`, `password`) VALUES ('vardhan@gmail.com', 'vardhan');
+
+select * FROM feedback;
+select * FROM reserve;
+select * FROM category;
+select * FROM product;
+select * FROM slots;
+select * FROM admin;

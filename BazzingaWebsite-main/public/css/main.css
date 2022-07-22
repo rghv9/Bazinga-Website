@@ -1,0 +1,90 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+    font-family: sans-serif;
+}
+.container{
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/images/background.jfif") center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    min-height: 100vh;
+}
+.card{
+    display: grid;
+    grid-template-columns: 420px 420px;
+}
+.card-img{
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    background: url("/images/tables.jpg") center/cover no-repeat;
+}
+.container h1{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 40px;
+    margin-bottom: 70px;
+    color: ghostwhite;
+    opacity: 0.8;
+}
+.card-content{
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    background: white;
+    height: 330px;
+}
+.card-content h3{
+    text-align: center;
+    color:black;
+    padding: 25px 0 10px 0;
+    font-size: 30px;
+    font-weight: 300;
+}
+form select, form input{
+    display: block;
+    width: 100%;
+    margin: 20px 12px;
+    padding: 5px;
+    font-size: 15px;
+    font-family: sans-serif;
+    border: none;
+    border-bottom: 1px solid #eee;
+    font-weight: 300;
+}
+.form-row{
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+}
+form input::placeholder,input[type = text],form input[type = number],select{
+    color: slategray;
+}
+form input[type=submit]{
+    color: #fff;
+    background:darkcyan;
+    padding: 12px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+form input[type=submit]:hover{
+    opacity: 0.8;
+}
+@media(max-width: 850px){
+    .container{
+        background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("/images/background.jfif") center/cover no-repeat;
+    }
+    .card-img{
+        display: none;
+    }
+    .card-content{
+        border-radius: 40px;
+    }
+    .card{
+        grid-template-columns: 100%;
+        width: 80vw;
+    }
+}

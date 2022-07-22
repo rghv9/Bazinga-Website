@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/admin_index_style.css">
+    <style>
+        .container {
+            /* background:#dfe6e9; */
+            /* background: rgb(215, 31, 31); */
+            /* background: linear-gradient(90deg, url('/images/bg4.jpg'),rgba(215, 31, 31, 1) 0%, rgba(255, 238, 71, 0.9604575106409752) 75%); */
+            background: linear-gradient(180deg, rgba(231, 182, 21, 0.8), rgba(31, 29, 29, 0.8)), url("/images/pizza.png");  /* Chrome 10-25, Safari 5.1-6 */
+            max-width: 1000px;
+            background-size: contain;
+            background-position: center;
+    background-repeat: no-repeat;
+            border-radius: 10px;
+            padding: 30px 30px;
+            text-align: center;
+        }
+
+        #feedback {
+            outline: none;
+            border: none;
+            padding: 10px 20px;
+            font-size: medium;
+            font-weight: 500;
+            background: linear-gradient(rgba(231, 182, 21, 0.8), black), url("/images/pizza.png");  /* Chrome 10-25, Safari 5.1-6 */
+            color: white;
+        }
+
+        #send{
+            background-color: black;
+            color: whitesmoke;
+        }
+    </style>
+</head>
+
+<%- include('_layouts/header'); -%>
+
+    <div class="container">
+        <form action="/feedback" method="POST">
+            <textarea id="feedback" name="feedback" rows="10" cols="50%" maxlength="1000"
+                placeholder="Love to have your feedback..." required></textarea>
+            <br>
+            <input type="submit" id="send" value="SEND">
+        </form>
+    </div>
+
+
+    <%- include('_layouts/footer'); -%>
